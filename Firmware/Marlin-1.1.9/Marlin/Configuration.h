@@ -19,6 +19,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * Tuned by Babaika for monster on 03.02.2019
+ * Retuned by Sakamiai for monsteri on 23.4.2020
  */
 
 /**
@@ -82,10 +83,10 @@
 // User-specified version info of this build to display in [Pronterface, etc] terminal window during
 // startup. Implementation of an idea by Prof Braino to inform user that any changes made to this
 // build by the user have been successfully uploaded into firmware.
-#define STRING_CONFIG_H_AUTHOR "(Babaika, config based on Marlin 1.9.9)" // Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "(Sakamiai, config based on Marlin 1.1.9)" // Who made the changes.
 #define SHOW_BOOTSCREEN
-#define STRING_SPLASH_LINE1 "v.1.9.9-B2" // will be shown during bootup in line 1
-#define STRING_SPLASH_LINE2 "by Babaika Oy"         // will be shown during bootup in line 2
+#define STRING_SPLASH_LINE1 "v.1.1.9-B3" // will be shown during bootup in line 1
+#define STRING_SPLASH_LINE2 "by Sakamiai"         // will be shown during bootup in line 2
 
 /**
  * *** VENDORS PLEASE READ ***
@@ -612,9 +613,12 @@
 /**
  * Default Axis Steps Per Unit (steps/mm)
  * Override with M92
+ * Calculated from: https://blog.prusaprinters.org/calculator/
+ * Z with normal threaded rods: 4000
+ * Z with lead screws: 400
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4]]]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 4000, 760 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 760 }
 
 /**
  * Default Max Feed Rate (mm/s)
