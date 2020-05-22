@@ -379,10 +379,15 @@
   #define PID_FUNCTIONAL_RANGE 25 // If the temperature difference between the target temperature and the actual temperature
                                   // is more than PID_FUNCTIONAL_RANGE then the PID will be shut off and the heater will be set to min/max.
 
+  // calibrated 27.4.2020
+  #define DEFAULT_Kp 15.86
+  #define DEFAULT_Ki 0.89
+  #define DEFAULT_Kd 70.47
+
   // Values obtained after 8 runs of M303 E0 C8 S215 from cold, with and without fans.
-  #define DEFAULT_Kp 13.04
-  #define DEFAULT_Ki 0.65
-  #define DEFAULT_Kd 65.2
+  //#define DEFAULT_Kp 13.04
+  //#define DEFAULT_Ki 0.65
+  //#define DEFAULT_Kd 65.2
 
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
 
@@ -420,7 +425,7 @@
  * heater. If your configuration is significantly different than this and you don't understand
  * the issues involved, don't use bed PID until someone else verifies that your hardware works.
  */
-//#define PIDTEMPBED
+// #define PIDTEMPBED
 
 //#define BED_LIMIT_SWITCHING
 
@@ -618,14 +623,15 @@
  * Z with lead screws: 400
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4]]]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 760 }
+ // Calibrated 26.4.2020
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.04, 80.27, 400, 829 }
 
 /**
  * Default Max Feed Rate (mm/s)
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4]]]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 200, 200, 3, 25 }
+#define DEFAULT_MAX_FEEDRATE          { 200, 200, 5, 25 }
 
 /**
  * Default Max Acceleration (change/s) change = mm/s
@@ -890,7 +896,7 @@
 
 // The size of the print bed
 #define X_BED_SIZE 170
-#define Y_BED_SIZE 140
+#define Y_BED_SIZE 170
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
@@ -1667,6 +1673,10 @@
 // http://reprap.org/wiki/RepRapDiscount_Full_Graphic_Smart_Controller
 //
 #define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
+#define ST7920_DELAY_1 DELAY_NS(0) 
+#define ST7920_DELAY_2 DELAY_NS(250) 
+#define ST7920_DELAY_3 DELAY_NS(250)
+
 
 //
 // ReprapWorld Graphical LCD
