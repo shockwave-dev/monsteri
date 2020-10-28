@@ -240,12 +240,12 @@
  *
  * :{ 0:'No power switch', 1:'ATX', 2:'X-Box 360' }
  */
-#define POWER_SUPPLY 1
+#define POWER_SUPPLY 2
 
 #if POWER_SUPPLY > 0
   // Enable this option to leave the PSU off at startup.
   // Power to steppers and heaters will need to be turned on with M80.
-  //#define PS_DEFAULT_OFF
+  #define PS_DEFAULT_OFF
 
   //#define AUTO_POWER_CONTROL        // Enable automatic control of the PS_ON pin
   #if ENABLED(AUTO_POWER_CONTROL)
@@ -380,9 +380,9 @@
                                   // is more than PID_FUNCTIONAL_RANGE then the PID will be shut off and the heater will be set to min/max.
 
   // calibrated 27.4.2020
-  #define DEFAULT_Kp 15.86
-  #define DEFAULT_Ki 0.89
-  #define DEFAULT_Kd 70.47
+  #define DEFAULT_Kp 28.63
+  #define DEFAULT_Ki 2.51
+  #define DEFAULT_Kd 81.50
 
   // Values obtained after 8 runs of M303 E0 C8 S215 from cold, with and without fans.
   //#define DEFAULT_Kp 13.04
@@ -623,8 +623,8 @@
  * Z with lead screws: 400
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4]]]]
  */
- // Calibrated 26.4.2020
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.04, 80.27, 400, 829 }
+ // Calibrated 3.10.2020
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.04, 80.27, 400, 164.5 }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -895,8 +895,8 @@
 // @section machine
 
 // The size of the print bed
-#define X_BED_SIZE 170
-#define Y_BED_SIZE 170
+#define X_BED_SIZE 200
+#define Y_BED_SIZE 164
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
@@ -904,7 +904,7 @@
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
-#define Z_MAX_POS 148
+#define Z_MAX_POS 160
 
 /**
  * Software Endstops
@@ -993,13 +993,13 @@
 //#define AUTO_BED_LEVELING_LINEAR
 //#define AUTO_BED_LEVELING_BILINEAR
 //#define AUTO_BED_LEVELING_UBL
-//#define MESH_BED_LEVELING
+#define MESH_BED_LEVELING
 
 /**
  * Normally G28 leaves leveling disabled on completion. Enable
  * this option to have G28 restore the prior leveling state.
  */
-//#define RESTORE_LEVELING_AFTER_G28
+#define RESTORE_LEVELING_AFTER_G28
 
 /**
  * Enable detailed logging of G28, G29, M48, etc.
@@ -1023,12 +1023,12 @@
   /**
    * Enable the G26 Mesh Validation Pattern tool.
    */
-  //#define G26_MESH_VALIDATION
+  #define G26_MESH_VALIDATION
   #if ENABLED(G26_MESH_VALIDATION)
-    #define MESH_TEST_NOZZLE_SIZE    0.4  // (mm) Diameter of primary nozzle.
-    #define MESH_TEST_LAYER_HEIGHT   0.2  // (mm) Default layer height for the G26 Mesh Validation Tool.
+    #define MESH_TEST_NOZZLE_SIZE    0.5  // (mm) Diameter of primary nozzle.
+    #define MESH_TEST_LAYER_HEIGHT   0.32  // (mm) Default layer height for the G26 Mesh Validation Tool.
     #define MESH_TEST_HOTEND_TEMP  205.0  // (°C) Default nozzle temperature for the G26 Mesh Validation Tool.
-    #define MESH_TEST_BED_TEMP      60.0  // (°C) Default bed temperature for the G26 Mesh Validation Tool.
+    #define MESH_TEST_BED_TEMP      70.0  // (°C) Default bed temperature for the G26 Mesh Validation Tool.
   #endif
 
 #endif
@@ -1115,7 +1115,7 @@
  * Add a bed leveling sub-menu for ABL or MBL.
  * Include a guided procedure if manual probing is enabled.
  */
-//#define LCD_BED_LEVELING
+#define LCD_BED_LEVELING
 
 #if ENABLED(LCD_BED_LEVELING)
   #define MBL_Z_STEP 0.025    // Step size while manually probing Z axis.
